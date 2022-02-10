@@ -15,6 +15,14 @@ refs.startBtn.disabled = true;
 let timerId = null;
 let startTimer = new Date();
 
+
+refs.startBtn.addEventListener('click', () => {
+    timerId = setInterval(() => {
+
+       updateTimer();
+   }, 1000);
+});
+
 const options = {
     enableTime: true,
     time_24hr: true,
@@ -22,7 +30,7 @@ const options = {
     minuteIncrement: 1,
     onClose(selectedDates) {
       console.log(selectedDates[0]);
-      
+
       if (selectedDates[0] < Date.now()) {
           window.alert (`Please choose a date in the future`)
       } else {
@@ -35,14 +43,6 @@ const options = {
   };
 
   flatpickr(refs.dateSelector, options);
-
- refs.startBtn.addEventListener('click', () => {
-     timerId = setInterval(() => {
-
-        updateTimer();
-    }, 1000);
-});
-
 
 
 function convertMs(ms) {
@@ -63,7 +63,6 @@ function convertMs(ms) {
 function addLeadingZero(value) {
     return String(value).padStart(2, '0');
 }
-
 
   function updateTimer() {
     if (startTimer > 1) {
