@@ -29,23 +29,11 @@ function onFormSubmit(e) {
   let steps = refs.steps.value;
   console.log(`Delay`, delay);
 
-    createPromise(1, delay)
-      .then(({ position, delay }) => {
-        console.log(`✅ Fulfilled promise 1 in ${delay} ms`);
-        Notiflix.Notify.success(`✅ Fulfilled promise 1 in ${delay} ms`);
-      })
-      .catch(({ position, delay }) => {
-        console.log(`❌ Rejected promise 1 in ${delay} ms`);
-        Notiflix.Notify.failure(`❌ Rejected promise 1 in ${delay} ms`);
-      });
-
-    // console.log(`Delay`, delay);
-
-  for (let i = 2; i <= amount; i++){
+  for (let i = 1; i <= amount; i++){
     let delay = Number(steps * i);
     console.log(`i {i} delay`, delay);
   
-
+    
     createPromise(i, delay)
     .then(({ position, delay }) => {
       console.log(`✅ Fulfilled promise ${i} in ${delay} ms`);
